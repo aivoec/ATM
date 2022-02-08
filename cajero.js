@@ -1,5 +1,5 @@
 var caja=[];
-var div=0, papeles=0;
+var div=0, papeles=0, suma=0;
 var guardar=[];
 var botoncito=document.getElementById('boton');
 var res=document.getElementById('res');
@@ -64,15 +64,14 @@ function activarBoton()
         guardar.push(new Billete(p.valor,papeles,p.imagen));
         dinero=dinero-(p.valor*papeles);
         p.cantidad=p.cantidad-papeles;
-
-            console.log(dinero);
+        console.log(caja);
 
       } // if dinero >0 1
     } // for
 
       if (dinero>0)
         {
-          res.innerHTML= "Soy un cajero malo y puedo darte esa cantidad :(";
+          res.innerHTML= "Estoy pobre #SENDHELP";
         }
         else
         {
@@ -95,7 +94,12 @@ function activarBoton()
               nuevo.innerText = 'Finalizar Transacción';
               document.body.appendChild(nuevo);
     }// else de la validación
+    caja.forEach(function(array)
+    {suma+=array.valor*array.cantidad;
+      console.log("Total Cajero: "+suma);
+    });
 }
+
 
 
 
