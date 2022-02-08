@@ -20,6 +20,7 @@ imagenes["1"]="1.png";
 
 
 
+
 class Billete
   {
     constructor(v, c)
@@ -41,8 +42,13 @@ class Billete
 function activarBoton()
 {
   var t=document.getElementById("dinerito");
+  if(t.value === '') {
+      alert('Enter the ammount to Withdraw!!!');
+    }
+  else
+  {
   dinero=parseInt(t.value);
-  for (var p of caja)
+    for (var p of caja)
     {
       if (dinero>0)
       {
@@ -75,27 +81,32 @@ function activarBoton()
               {
                 if (e.cantidad>0)
                 {
-                res.innerHTML= res.innerHTML+ e.cantidad+" Billetes de $" + e.valor + "</br>" ;
-                document.body.appendChild(e.imagen);
-                }
-              }
+                res.innerHTML+=e.cantidad+" Billetes de $" + e.valor + "</br>" ;
+                e.imagen.widht=500;
+                e.imagen.height=100;
+                for (var i = 0; i <e.cantidad ; i++)
+                  {
+                    document.getElementById('espacio2').appendChild(e.imagen);
+                  }
+                }//if
+              }//for
+            }//else
               nuevo.type = 'button';
               nuevo.innerText = 'Finalizar Transacción';
               document.body.appendChild(nuevo);
-        }
+    }// else de la validación
 }
+
+
 
 function reload()
 {
-  var elements = document.getElementById("dinerito").value="";
-
+  var elements=document.getElementById("dinerito")
+  elements.value="";
   res.innerHTML="</br>"
   espacio.innerHTML="</br>"
+  espacio2.innerHTML="</br>"
   document.body.removeChild(nuevo);
-  for (var e of guardar)
-    {
-      document.querySelector("div.user-panel.main img[src=imagenes[e.valor]");
-    }
   dinero=0;
   papeles=0;
   div=0;
